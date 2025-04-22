@@ -1,7 +1,7 @@
 ---
 title: "Burden of Disease Report"
 subtitle: "Collaborative GitHub and RMarkdown Practice"
-author: "The GRAPH Courses Team"
+author: "Farhad, Garuba, Abdullahi"
 output: prettydoc::html_pretty
 ---
 
@@ -16,9 +16,9 @@ The example report is divided into 3 major subsections:
 
 1.  Communicable, Maternal, Neonatal, and Nutritional Disease Burden (CMNN)
 
-2.  Non-Communicable Disease Burden (NCD)
+2.  Non-Communicable Disease Burden (NCD):Garuba
 
-3.  Overall Disease Burden
+3.  Overall Disease Burden: Farhad
 
 **We have created a minimal example of report [here](https://github.com/the-graph-courses/misc_public/blob/main/rmc_week_02_workshop/rmd/burden_of_disease_report.md){target="_blank"}.**
 
@@ -36,11 +36,11 @@ As you may remember from the lesson, merge conflicts can happen when multiple co
 
 To avoid merge conflicts, we will split the full report into shorter documents, and each member can work on their own document without disturbing the others.
 
-1.  **Partner 1 (Repo Owner)** - Section 1: CMNN burden
+1.  **Partner 1 (Abdullahi)** - Section 1: CMNN burden
 
-2.  **Partner 2** - Section 2: NCD burden
+2.  **Partner 2: Garuba** - Section 2: NCD burden
 
-3.  **Partner 3** - Section 3: Overall burden
+3.  **Partner 3: Farhad** - Section 3: Overall burden
 
 Each group member should take responsibility for completing one of these child documents. 
 

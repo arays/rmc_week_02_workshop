@@ -1,16 +1,28 @@
+
 # Communicable, Maternal, Neonatal, and Nutritional Disease Burden (CMNN)
 
-```{r}
+```{r echo=FALSE}
 # Load necessary packages
 pacman::p_load(tidyverse, knitr, here)
+#authors: 
+#1.  **Partner 1 (Abdullahi)** - Section 1: CMNN burden
+#2.  **Partner 2: Garuba** - Section 2: NCD burden
+#3.  **Partner 3: Farhad** - Section 3: Overall burden
 
 # Import the communicable diseases data
 data_cmnn <- read_csv(here("data/burden-of-disease-cmnn.csv"))
+
+
 ```
+
 
 ```{r}
 # Filter the dataset to include only the three countries chosen by your group.
-data_cmnn_mini <- "WRITE_YOUR_CODE_HERE"
+data_cmnn_mini <- data_cmnn %>% 
+  filter(Entity %in% c("Afghanistan", "Bangladesh", "Botswana")) %>% 
+    rename(DALYs_CMNN = `DALYs (Disability-Adjusted Life Years) - Communicable, maternal, neonatal, and nutritional diseases - Sex: Both - Age: Age-standardized (Rate)`,
+           country=Entity)
+  
 ```
 
 ## Table of Estimates for CMNN Burden Over Time
@@ -18,8 +30,10 @@ data_cmnn_mini <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here render a table for the DALY burden over time for the three countries.
 # You should pivot the data wider to show each country in a separate column.
-data_cmnn_wide <- "WRITE_YOUR_CODE_HERE"
+data_cmnn_wide <- data_cmnn_mini %>% 
+pivot_wider(names_from = Year, values_from=DALYs_CMNN) 
 # Use kable() from the knitr package to render the table.
+kable(data_cmnn_wide, caption = "DALY Burden Over Time for Selected Countries")
 ```
 
 ## Plot Showing Trends in CMNN Burden Over Time
@@ -27,8 +41,21 @@ data_cmnn_wide <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
 # NOTE: Use your long 'mini' data frame for plotting, not the wide data used for the table. 
+ggplot(data=data_cmnn_mini, mapping=aes(x=Year, y= DALYs_CMNN, group=country, color=country, fill=country))+
+  geom_line()+
+  geom_point()+
+  labs(
+    x= "Year",
+    y="Disability-Adjusted Life Years (DALY)",
+    title="Communicable, Maternal, Neonatal, and Nutritional Disease Burden trend",
+    subtitle= "Afghanistan, Bangladesh and Botswana, 1990 to 2019",
+    caption = "Data Source: daly_report_PARENT"
+  )
 ```
 
 ## Summary of CMNN Burden Findings
 
 Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
+#Botsana has the highest burden of disease among the three countries. 
+#the burden of disease in Botwana has decreased after 2000 onwards 
+#Bangladesh had the highest of disease burden in 1990  but it has gradually decreased and it has the lowest burdent of disease
