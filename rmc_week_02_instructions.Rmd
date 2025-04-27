@@ -1,7 +1,11 @@
 ---
 title: "Burden of Disease Report"
 subtitle: "Collaborative GitHub and RMarkdown Practice"
+<<<<<<< Updated upstream
 author: "Farhad, Garuba, Abdullahi"
+=======
+author: "Farhad,GAruba,Abdullahi"
+>>>>>>> Stashed changes
 output: prettydoc::html_pretty
 ---
 
@@ -40,7 +44,11 @@ To avoid merge conflicts, we will split the full report into shorter documents, 
 
 2.  **Partner 2: Garuba** - Section 2: NCD burden
 
+<<<<<<< Updated upstream
 3.  **Partner 3: Farhad** - Section 3: Overall burden
+=======
+3.  **Partner Farhad Ali** - Section 3: Overall burden
+>>>>>>> Stashed changes
 
 Each group member should take responsibility for completing one of these child documents. 
 

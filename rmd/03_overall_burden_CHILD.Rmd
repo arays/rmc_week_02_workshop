@@ -1,3 +1,5 @@
+#group3
+#Farhad,Abdullahi,Garuba
 # Overall Disease Burden
 
 ```{r}
@@ -10,7 +12,8 @@ data_overall <- read_csv(here("data/burden-of-disease-all-causes.csv"))
 
 ```{r}
 # Filter the dataset to include only the three countries chosen by your group.
-data_overall_mini <- "WRITE_YOUR_CODE_HERE"
+data_overall_mini <- data_overall %>%
+  filter(Entity %in% c("Afghanistan", "Bangladesh", "Botswana"))
 ```
 
 ## Table of Estimates for Overall Disease Burden Over Time
@@ -18,7 +21,16 @@ data_overall_mini <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here render a table for the DALY burden over time for the three countries. 
 # You should pivot the data wider to show each country in a separate column.
-data_overall_wide <- "WRITE_YOUR_CODE_HERE"
+# Pivot data to show each country in a separate column
+data_overall_wide <- data_overall_mini %>%
+  select(Entity, Year, DALYs = 4) %>%
+  pivot_wider(names_from = Entity, values_from = DALYs)
+
+# Render table using kable
+kable(data_overall_wide, caption = "DALY Burden Over Time for Selected Countries")
+
+
+
 # Use kable() from the knitr package to render the table.
 ```
 
@@ -27,8 +39,26 @@ data_overall_wide <- "WRITE_YOUR_CODE_HERE"
 ```{r}
 # Here, plot a line graph showing the trend of DALY burden for the chosen countries over time. You can use ggplot2 to create this plot. Each country's line should be a different color.
 # NOTE: Use your long 'mini' data frame for plotting, not the wide data used for the table. 
+
+daly_plot <- ggplot(data_overall_mini, aes(x = Year, y = `DALYs (Disability-Adjusted Life Years) - All causes - Sex: Both - Age: Age-standardized (Rate)`, color = Entity)) +
+  geom_line(size = 1) +
+  labs(
+    title = "DALY Burden Over Time",
+    x = "Year",
+    y = "DALY Rate (Age-standardized)",
+    color = "Country"
+  ) +
+  theme_minimal()
+
+# Print the plot
+daly_plot
+
+# Save the plot as JPG
+ggsave(filename = "daly_burden_over_time.jpg", plot = daly_plot, width = 10, height = 6, dpi = 300)
+
+
 ```
 
 ## Summary of Overall Disease Burden Findings
 
-Provide a brief analysis based on the data presented in the table and chart. Highlight any significant findings or patterns. About 3 sentences.
+The chart shows a clear decline in DALY rates over time for all three countries. Bangladesh demonstrates the most consistent and steep reduction in disease burden, while Botswana shows a sharp increase until the early 2000s followed by a significant decline. Afghanistan’s burden remains relatively high but gradually decreases over the years.
