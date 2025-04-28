@@ -50,7 +50,8 @@ ggplot(data=data_cmnn_mini, mapping=aes(x=Year, y= DALYs_CMNN, group=country, co
     title="Communicable, Maternal, Neonatal, and Nutritional Disease Burden trend",
     subtitle= "Afghanistan, Bangladesh and Botswana, 1990 to 2019",
     caption = "Data Source: daly_report_PARENT"
-  )
+  )+
+theme_minimal()
 ```
 
 ## Summary of CMNN Burden Findings
